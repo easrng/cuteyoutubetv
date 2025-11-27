@@ -97,6 +97,21 @@ async function connect() {
               },
             );
 
+            const volumeDescriptor = Object.getOwnPropertyDescriptor(
+              HTMLMediaElement.prototype,
+              "volume",
+            )!;
+            Object.defineProperty(
+              HTMLMediaElement.prototype,
+              "volume",
+              {
+                ...volumeDescriptor,
+                set(_) {
+                  volumeDescriptor.set!.call(this, 1);
+                },
+              },
+            );
+
             // functions from https://github.com/webosbrew/youtube-webos/blob/main/src/thumbnail-quality.ts
             function rewriteURL(url: URL) {
               const YT_THUMBNAIL_PATHNAME_REGEX =
