@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  },
+  "imports": {
+    "@std/streams": "jsr:@std/streams@^1.0.14",
+    "get-port": "npm:get-port@^7.1.0"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "deno.ns"]
+  }
+}
